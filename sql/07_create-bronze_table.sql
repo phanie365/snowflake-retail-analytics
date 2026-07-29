@@ -1,0 +1,81 @@
+use role role_data_engineer ; 
+use warehouse wh_commercial_analytics;
+use database commercial_analytics;
+use schema bronze ; 
+
+
+SELECT
+    o.O_ORDERKEY       AS SALE_ID,
+    o.O_ORDERDATE      AS SALE_DATE,
+    n.N_NAME           AS COUNTRY,
+    c.C_NAME           AS CUSTOMER_NAME,
+    c.C_ADDRESS        AS CUSTOMER_ADDRESS,
+    c.C_PHONE          AS CUSTOMER_PHONE,
+    p.P_NAME           AS PRODUCT_NAME,
+    p.P_BRAND          AS PRODUCT_BRAND,
+    p.P_TYPE           AS PRODUCT_TYPE,
+    l.L_QUANTITY       AS QUANTITY,
+    l.L_EXTENDEDPRICE  AS EXTENDED_PRICE,
+    l.L_DISCOUNT       AS DISCOUNT,
+    l.L_TAX            AS TAX
+FROM SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.ORDERS o
+
+JOIN SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.CUSTOMER c
+    ON o.O_CUSTKEY = c.C_CUSTKEY
+
+JOIN SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.NATION n
+    ON c.C_NATIONKEY = n.N_NATIONKEY
+
+JOIN SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.LINEITEM l
+    ON o.O_ORDERKEY = l.L_ORDERKEY
+
+JOIN SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.PART p
+    ON l.L_PARTKEY = p.P_PARTKEY
+
+LIMIT 20;
+
+-- creer la table 
+CREATE OR REPLACE TABLE SALES_RAW AS
+
+SELECT
+    o.O_ORDERKEY       AS SALE_ID,
+    o.O_ORDERDATE      AS SALE_DATE,
+    n.N_NAME           AS COUNTRY,
+    c.C_NAME           AS CUSTOMER_NAME,
+    c.C_ADDRESS        AS CUSTOMER_ADDRESS,
+    c.C_PHONE          AS CUSTOMER_PHONE,
+    p.P_NAME           AS PRODUCT_NAME,
+    p.P_BRAND          AS PRODUCT_BRAND,
+    p.P_TYPE           AS PRODUCT_TYPE,
+    l.L_QUANTITY       AS QUANTITY,
+    l.L_EXTENDEDPRICE  AS EXTENDED_PRICE,
+    l.L_DISCOUNT       AS DISCOUNT,
+    l.L_TAX            AS TAX
+
+FROM SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.ORDERS o
+
+JOIN SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.CUSTOMER c
+    ON o.O_CUSTKEY = c.C_CUSTKEY
+
+JOIN SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.NATION n
+    ON c.C_NATIONKEY = n.N_NATIONKEY
+
+JOIN SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.LINEITEM l
+    ON o.O_ORDERKEY = l.L_ORDERKEY
+
+JOIN SNOWFLAKE_SAMPLE_DATA.TPCH_SF1.PART p
+    ON l.L_PARTKEY = p.P_PARTKEY
+
+WHERE n.N_NAME IN ('FRANCE', 'GERMANY', 'MOROCCO');
+
+-- afficher les 10 premieres lignes de la table
+SELECT *
+FROM SALES_RAW
+LIMIT 10;
+
+select count(*) 
+from sales_raw;
+
+select distinct country 
+from sales_raw;
+
