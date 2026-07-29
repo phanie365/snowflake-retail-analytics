@@ -41,13 +41,3 @@ snowflake-retail-analytics/
 └── .gitignore
 
 
-### 4. Initialise Git
-
-Dans le terminal de VS Code :
-
-```bash
-git init
-git branch -M main
-git add .
-git commit -m "Initialisation du projet Snowflake Retail Analytics"
-```
