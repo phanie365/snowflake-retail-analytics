@@ -1,8 +1,8 @@
-# 🛡️ POC Snowflake – Gouvernance et Sécurisation des Données
+#  POC Snowflake – Gouvernance et Sécurisation des Données
 
 > **Une seule plateforme de données. Des accès adaptés à chaque utilisateur.**
 
-## 📖 Contexte métier
+##  Contexte métier
 
 Une entreprise internationale du secteur du retail est implantée dans plusieurs pays :
 
@@ -18,7 +18,7 @@ Ce Proof of Concept répond à ce besoin en mettant en œuvre les mécanismes de
 
 ---
 
-# 🎯 Objectifs
+#  Objectifs
 
 Ce projet a pour objectif de démontrer qu'il est possible de :
 
@@ -30,7 +30,7 @@ Ce projet a pour objectif de démontrer qu'il est possible de :
 
 ---
 
-# 🏗️ Architecture du projet
+# Architecture du projet
 
 ```
                 Sources
@@ -67,7 +67,7 @@ Ce projet a pour objectif de démontrer qu'il est possible de :
 
 La sécurité repose sur plusieurs mécanismes complémentaires.
 
-## 👤 Business Roles
+## Business Roles
 
 Des rôles métiers ont été créés afin de représenter les différents profils de l'entreprise.
 
@@ -81,7 +81,7 @@ Exemple :
 
 ---
 
-## 🔑 Gestion des privilèges
+## Gestion des privilèges
 
 Chaque rôle reçoit uniquement les autorisations nécessaires.
 
@@ -96,7 +96,7 @@ Les privilèges sont attribués selon les responsabilités de chaque rôle.
 
 ---
 
-## 🛡️ Row Access Policies
+## Row Access Policies
 
 Les politiques de filtrage permettent d'afficher uniquement les lignes correspondant au pays de l'utilisateur connecté.
 
@@ -111,7 +111,7 @@ Exemple :
 
 ---
 
-## 🔒 Masking Policies
+## Masking Policies
 
 Les données sensibles sont automatiquement masquées selon le rôle connecté.
 
@@ -124,7 +124,7 @@ Exemple :
 
 ---
 
-# ⚙️ Fonctionnalités implémentées
+# Fonctionnalités implémentées
 
 ✔ Création des rôles
 
@@ -148,7 +148,7 @@ Exemple :
 
 ---
 
-# 🧪 Démonstration
+# Démonstration
 
 Le projet montre qu'une même requête peut produire des résultats différents selon le rôle actif.
 
@@ -186,7 +186,7 @@ CUSTOMER_ADDRESS
 
 ---
 
-# 📂 Structure du projet
+#  Structure du projet
 
 ```
 snowflake-retail-analytics/
@@ -226,7 +226,7 @@ snowflake-retail-analytics/
 
 ---
 
-# 🛠️ Technologies utilisées
+#  Technologies utilisées
 
 - ❄️ Snowflake
 - SQL
@@ -237,7 +237,7 @@ snowflake-retail-analytics/
 
 ---
 
-# 💡 Ce que démontre ce POC
+#  Ce que démontre ce POC
 
 Ce projet montre qu'il est possible de construire une plateforme de données unique tout en garantissant un niveau de sécurité élevé.
 
@@ -247,7 +247,7 @@ Les données restent centralisées, les traitements sont simplifiés et les info
 
 ---
 
-# 🚀 Perspectives d'évolution
+#  Perspectives d'évolution
 
 Ce Proof of Concept peut facilement être étendu afin d'intégrer :
 
